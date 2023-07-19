@@ -17,22 +17,6 @@ code {
 	border: 0;
 }
 
-/* @font-face {
-  src: url("../public/fonts/Ubuntu-Bold.ttf");
-  font-family: "Ubuntu";
-  font-style: normal;
-  letter-spacing: 0.01em;
-}
-
-
-@font-face {
-  src: url("../public/fonts/Ubuntu-Medium.ttf");
-  font-family: "Ubuntu";
-  font-style: normal;
-  letter-spacing: 0.01em;
-}
-   */
-
 @font-face {
   src: url("../public/fonts/Ubuntu-Regular.ttf");
   font-family: "Ubuntu";
