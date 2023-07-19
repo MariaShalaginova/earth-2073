@@ -1,0 +1,27 @@
+.button {
+    width: 22%;
+    height: 60px;
+    /* padding:14px, 46px, 14px, 46px; */
+    background-color: #89E159;
+    border-radius: 12px;
+    font-family: Ubuntu;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 32px;
+    letter-spacing: 0em;
+    color: #1F2431;
+}
+
+.button:hover {
+    color:#DBE2F9;
+    /* background: linear-gradient(0deg, #89E159, #89E159),
+    linear-gradient(0deg, rgba(137, 225, 89, 0.1), rgba(137, 225, 89, 0.1)); */
+    background-color:rgba(137, 225, 89, 0.1);
+    border: 2px solid rgba(137, 225, 89, 1);
+    cursor: pointer;
+}
+
+.button:active {
+    background: linear-gradient(94.75deg, #89E159 8.46%, #B9F598 95.23%);
+    color: rgba(31, 36, 49, 1);
+}
