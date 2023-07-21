@@ -1,60 +1,77 @@
-//import React, { useState } from "react";
-import React from 'react';
+import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 // import StartScreen from "./StartScreen";
+import startScreen from '../../assets/classroom.png';
+import Button from "../buttons/Button";
+import DarkButton from "../buttons/DarkButton";
 // import GameScreen from "./GameScreen";
 // import EndScreen from "./EndScreen";
+import css from '../game/Game.module.css';
+import classNames from 'classnames';
 
-const Game = () => {
-    // const [currentScreen, setCurrentScreen] = useState("start");
+const Games = () => {
 
-  // const changeScreen = (screenName) => {
-  //   setCurrentScreen(screenName);
-  // };
+  const navigate = useNavigate();
+  const [currentScene, setCurrentScene] = useState(0);
+  const [isAddStyle, setIsAddStyle] = useState(false);
 
-  // const renderScreen = () => {
-  //   // switch (currentScreen) {
-  //   //   case "start":
-  //   //     return <StartScreen changeScreen={changeScreen} />;
-  //   //   case "game":
-  //   //     return <GameScreen changeScreen={changeScreen} />;
-  //   //   case "end":
-  //   //     return <EndScreen changeScreen={changeScreen} />;
-  //   //   default:
-  //   //     return null;
-  //   // }
-  //   return null
-  // }
+  const scenes = [
+    {
+      id: 0,
+      name: 'стартовая',
+      dialogue: "Добро пожаловать в игру!",
+      characters: ["Алиса", "Артем", "Максим"],
+      img: startScreen,
+    },
+    {
+      id: 1,
+      name: 'портал',
+      dialogue: "Продолжение сюжета...",
+      characters: ["Персонаж 3", "Персонаж 4"],
+      img: '../../assets/room-2.png',
+    },
+    {
+      id: 2,
+      name: 'теплица',
+      dialogue: "Завершение игры.",
+      characters: ["Персонаж 5", "Персонаж 6"],
+      img: '../../assets/greenhouse-3.png',
+    },
+  ];
+
+  const handleNextScene = () => {
+    if (currentScene < scenes.length - 1) {
+      setCurrentScene(currentScene + 1);
+      setIsAddStyle(true);
+    } else {
+      console.log("Достигнут конец игры.");
+    }
+  };
+
+  
+
   return (
-    <h1>bbb</h1>
+    <>
+    
+      <div className={classNames(css.scene, isAddStyle ? '.sceneShow' : '')}>
+        <img  src={scenes[currentScene].img}  alt="classroom"/>
+        <div className={css.backMain}>
+          <Button onClick={async event => {navigate('/')}}>Главная страница</Button>
+        </div>
+        <div className={css.window}>
+         <div className={css.character}>{scenes[currentScene].characters[1]}</div> 
+          <div className={css.message}>{scenes[currentScene].dialogue}</div>
+            <div className={css.buttons}>
+              <DarkButton onClick={handleNextScene}>Пропустить</DarkButton>
+              <DarkButton onClick={handleNextScene}>Далее</DarkButton>
+          </div>
+        </div>
+      </div>
+      {/* <div>Персонажи: {scenes[currentScene].characters.join(", ")}</div> */}
+      
+    
+    </>
   )
 };
 
-export default Game;
-// import React from 'react';
-
-// // Компонент сцены
-// const Scene = ({ scenes, currentScene, onSceneChange }) => {
-//   // Обработчик смены сцены
-//   const handleSceneChange = (scene) => {
-//     if (onSceneChange) {
-//       onSceneChange(scene);
-//     }
-//   };
-
-//   // Рендеринг компонента сцены
-//   return (
-//     <div className="scene">
-//       {scenes.map((scene) => (
-//         <button
-//           key={scene.id}
-//           className={currentScene === scene.id ? 'active' : ''}
-//           onClick={() => handleSceneChange(scene.id)}
-//         >
-//           {scene.name}
-//         </button>
-//       ))}
-//     </div>
-//   );
-// };
-
-// export default Scene;
+export default Games;

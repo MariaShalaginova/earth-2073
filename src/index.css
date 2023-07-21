@@ -27,7 +27,11 @@ code {
 .wrapper {
   display: flex;
 	flex-direction: column;
-  height: auto;
+  /* height: auto; */
+  margin: 0 auto;
+  max-width: 1024px;
+  min-height: 768px;
+  flex-grow: 1;
 }
 
 body {
@@ -60,5 +64,5 @@ h1 {
   align-items: center;
   /* justify-content: center; */
   justify-content: space-evenly;
-height: 100vh;
+  height: 100vh;
 }

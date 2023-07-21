@@ -1,5 +1,5 @@
 .button {
-    width: 22%;
+    width: 232px;
     height: 60px;
     /* padding:14px, 46px, 14px, 46px; */
     background-color: #89E159;
@@ -24,4 +24,20 @@
 .button:active {
     background: linear-gradient(94.75deg, #89E159 8.46%, #B9F598 95.23%);
     color: rgba(31, 36, 49, 1);
+}
+
+.darkButton {
+    width: 129px;
+    color:rgba(137, 225, 89, 1);
+    /* background: linear-gradient(0deg, #89E159, #89E159),
+    linear-gradient(0deg, rgba(137, 225, 89, 0.1), rgba(137, 225, 89, 0.1)); */
+    background-color:rgba(137, 225, 89, 0.0);
+    border: none;
+    cursor: pointer;
+    height: 40px;
+    border-radius: 8px;
+}
+
+.darkButton:hover {
+    border: 2px solid rgba(137, 225, 89, 1);
 }
