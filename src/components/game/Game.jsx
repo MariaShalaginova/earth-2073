@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 // import StartScreen from "./StartScreen";
 // import startScreen from '../../assets/classroom.png';
@@ -14,8 +14,16 @@ const Games = () => {
   const navigate = useNavigate();
   const [currentScene, setCurrentScene] = useState(0);
   const [isAddStyle, setIsAddStyle] = useState(false);
-  const [currentWindowIndex, setCurrentWindowIndex] = useState(0);
+  // const [currentWindowIndex, setCurrentWindowIndex] = useState(0);
   const [currentDialog, setCurrentDialog] = useState(0);
+
+  // useEffect(() => {
+        
+  //   let token  = localStorage.getItem('tokenInfo');
+  //   localStorage.setItem('tokenInfo', JSON.stringify(result));
+
+  //   }        
+  // }, []);
  
   //пример структуры для хранения всех данных
   const scenes = [
