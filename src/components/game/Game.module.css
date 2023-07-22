@@ -42,7 +42,7 @@ img {
     width: 169px;
     height: 40px;
     background-color: rgba(219, 226, 249, 1);
-    border-radius: 8px 0 0 0;
+    border-radius: 8px;
     font-family: Ubuntu;
     font-size: 20px;
     font-weight: 500;
