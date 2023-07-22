@@ -215,63 +215,73 @@ const Games = () => {
       windows: [
         {
           window_id: 0,
-          character: 'Алиса',
-          text: 'Привет, ребята!',
-          path_img: ''
+          character: 'Марина',
+          text: 'Кажется, к нам кто-то идет. О, это новый учитель?',
+          path_img: '',
+          position: 'left'
         },
         {
           window_id: 1,
           character: 'Алиса',
           text: 'Выглядит, конечно, странно.',
-          path_img: ''
+          path_img: '',
+          position: 'left'
         },
         {
           window_id: 2,
           character: 'Артем',
           text: 'Похоже, он хочет у нас что-то спросить.',
-          path_img: ''
+          path_img: '',
+          position: 'left'
         },
         {
           window_id: 3,
           character: 'Алиса',
           text: 'Здравствуйте! Вам что-то подсказать?',
-          path_img: ''
+          path_img: '',
+          position: 'left'
         },
         {
           window_id: 4,
           character: 'Максим',
           text: 'Привет, ребята. Мне сказали, что вы интересуетесь экологией и инновациями.',
-          path_img: '' 
+          path_img: '',
+          position: 'left' 
         },
         {
           window_id: 5,
           character: 'Артем',
           text: 'Даже интересно, кто это доложил?',
-          path_img: ''
+          path_img: '',
+          position: 'left'
         },
         {
           window_id: 6,
           character: 'Максим',
           text: 'Меня зовут Максим Владимирович. И я пришёл из будущего. Я – ученый. Знаю, что у вас есть задачи, связанные с будущим нашей планеты.',
-          path_img: ''
+          path_img: '',
+          position: 'right'
         },
         {
           window_id: 7,
           character: 'Артем',
           text: 'Из будущего? Вы серьезно? У вас есть машина времени?',
-          path_img: ''
+          path_img: '',
+          position: 'left'
         },
         {
           window_id: 8,
           character: 'Алиса',
           text: 'Похоже на фантастику. Но если это правда, мы открыты новым идеям и возможностям.',
-          path_img: ''
+          path_img: '',
+          position: 'left'
         },
         {
           window_id: 9,
           character: 'Марина',
           text: 'Интересненько...',
-          path_img: ''
+          path_img: '',
+          position: 'left'
         }
       ]  
     }
