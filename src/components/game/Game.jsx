@@ -15,6 +15,7 @@ const Games = () => {
   const [currentScene, setCurrentScene] = useState(0);
   const [isAddStyle, setIsAddStyle] = useState(false);
   const [currentWindowIndex, setCurrentWindowIndex] = useState(0);
+  const [currentDialog, setCurrentDialog] = useState(0);
  
 
   // const scenes = [
@@ -160,8 +161,10 @@ const Games = () => {
 
     }  
   ]
-
-  const dialogues =[
+  // от бека нужен 1 endpoint типо getScenesAndDialog получаем. массив объектов всей игры сразу за 1 запрос. В юзе еффеект пишем фетч запрос. получаем данные 1 раз. dialogues
+  //todo хранить в локалсторадж номер диалога и номер сцены.
+  // структура данных будет расширяться, будут хранится пути к картинкам персонажей, и данные для отрисовки если она будет разная. если статичное не понадобится.
+  const dialogues = [
     {
       scene: [
         {
@@ -185,31 +188,31 @@ const Games = () => {
         },
         {
           window_id: 2,
-          characterName: 'Артем',
+          character: 'Артем',
           text: 'Денис, как твоя новая игра? Понравилась?',
           path_img: ''
         },
         {
           window_id: 3,
-          characterName: 'Денис',
+          character: 'Денис',
           text: 'Да, супер! Концовка - отпад.',
           path_img: ''
         },
         {
           window_id: 4,
-          characterName: 'Марина',
+          character: 'Марина',
           text: 'Ну и каквы думаете, зачем нас попросили остаться после уроков?',
           path_img: ''
         },
         {
           window_id: 5,
-          characterName: 'Артем',
+          character: 'Артем',
           text: 'Странный этот новый учитель биологии Максим Владимирович. Очень странный!',
           path_img: ''
         },
         {
           window_id: 6,
-          characterName: 'Денис',
+          character: 'Денис',
           text: 'А я как-то слышал, как он с кем-то по телефону говорил о каких-то роботах в теплицах Интересно, что он хочет нам сейчас тут рассказать...',
           path_img: ''
         }
@@ -280,7 +283,7 @@ const Games = () => {
         },
         {
           window_id: 9,
-          characterName: 'Марина',
+          character: 'Марина',
           text: 'Интересненько...',
           path_img: ''
         }
@@ -289,13 +292,43 @@ const Games = () => {
   ]
   
 
-  const handleNextScene = () => {
-    if (currentScene < scenes.length - 1) {
-      setCurrentScene(currentScene + 1);
-      setIsAddStyle(true);
-    } else {
-      console.log("Достигнут конец игры.");
+  const handlePrevDialog = () => {
+    let dialogLength = dialogues[currentScene].windows.length;
+
+    if( currentDialog === 0 && currentScene !==0 ) {
+      setCurrentScene(currentScene - 1);
+      dialogLength = dialogues[currentScene-1].windows.length;
+      setCurrentDialog(dialogLength-1);
+      return;
     }
+
+    if (currentDialog === 0 && currentScene === 0) {
+      return;
+    }
+    
+    if (currentDialog < dialogLength) {
+      setCurrentDialog(currentDialog - 1);
+      // setIsAddStyle(true);
+    }
+  };
+
+  const handleNextDialog = () => {    
+    const dialogLength = dialogues[currentScene].windows.length;
+    const sceneLength = dialogues.length - 1;
+  
+    if ( currentDialog < dialogLength -1 ) {
+      setCurrentDialog(currentDialog + 1);
+      return;
+      // setIsAddStyle(true);
+    }
+
+    if ( currentScene === sceneLength ) {
+        console.log("Конец");
+      return;
+    }
+
+    setCurrentScene( currentScene + 1 );
+    setCurrentDialog(0);    
   };
 
 
@@ -303,16 +336,16 @@ const Games = () => {
     <>
     
       <div className={classNames(css.scene, isAddStyle ? '.sceneShow' : '')}>
-        <img  src={dialogues[currentScene].path_img}  alt={dialogues[currentScene].name}/>
-        <div className={css.backMain}>
+        <img  src={dialogues[currentScene].scene[0].path_img}  alt={dialogues[currentScene].scene[0].name}/>
+        {/* <div className={css.backMain}>
           <Button onClick={async event => {navigate('/')}}>Главная страница</Button>
-        </div>
+        </div> */}
         <div className={css.window}>
-         <div className={css.character}>{dialogues.window[1].text}</div> 
-          <div className={css.message}>{scenes[currentScene].dialogue}</div>
+         <div className={css.character}>{dialogues[currentScene].windows[currentDialog].character}</div> 
+          <div className={css.message}>{dialogues[currentScene].windows[currentDialog].text}</div>
             <div className={css.buttons}>
-              <DarkButton onClick={handleNextScene}>Пропустить</DarkButton>
-              <DarkButton onClick={handleNextScene}>Далее</DarkButton>
+              <DarkButton onClick={handlePrevDialog}>Назад</DarkButton>
+              <DarkButton onClick={handleNextDialog}>Далее</DarkButton>
           </div>
         </div>
       </div>
