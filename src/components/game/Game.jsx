@@ -17,31 +17,7 @@ const Games = () => {
   const [currentWindowIndex, setCurrentWindowIndex] = useState(0);
   const [currentDialog, setCurrentDialog] = useState(0);
  
-
-  // const scenes = [
-  //   {
-  //     id: 0,
-  //     name: 'класс',
-  //     dialogue: "Добро пожаловать в игру!",
-  //     characters: ["Алиса", "Артем", "Максим"],
-  //     img: require('../../assets/classroom.png'),
-  //   },
-  //   {
-  //     id: 1,
-  //     name: 'портал',
-  //     dialogue: "Продолжение сюжета...",
-  //     characters: ["Персонаж 3", "Персонаж 4"],
-  //     img: '../../assets/room-2.png',
-  //   },
-  //   {
-  //     id: 2,
-  //     name: 'теплица',
-  //     dialogue: "Завершение игры.",
-  //     characters: ["Персонаж 5", "Персонаж 6"],
-  //     img: '../../assets/greenhouse-3.png',
-  //   },
-  // ];
-
+  //пример структуры для хранения всех данных
   const scenes = [
     {
       scene_id: 0,
@@ -101,61 +77,71 @@ const Games = () => {
           window_id: 0,
           characterName: 'Марина',
           text: 'Кажется, к нам кто-то идёт. О, это новый учитель?',
-          characterImage: ''
+          characterImage: '',
+          position: 'left'
         }, 
         {
           window_id: 1,
           characterName: 'Алиса',
           text: 'Выглядит, конечно, странно.',
-          characterImage: ''
+          characterImage: '',
+          position: 'left'
         },
         {
            window_id: 2,
           characterName: 'Артем',
           text: 'Похоже, он хочет у нас что-то спросить.',
-          characterImage: ''
+          characterImage: '',
+          position: 'left'
         },
         {
           window_id: 3,
           characterName: 'Алиса',
           text: 'Здравствуйте! Вам что-то подсказать?',
-          characterImage: ''
+          characterImage: '',
+          position: 'left'
         },
         {
           window_id: 4,
           characterName: 'Максим',
           text: 'Привет, ребята. Мне сказали, что вы интересуетесь экологией и инновациями.',
-          characterImage: '' 
+          characterImage: '',
+          position: 'right' 
         },
         {
           window_id: 5,
           characterName: 'Артем',
           text: 'Даже интересно, кто это доложил?',
-          characterImage: ''
+          characterImage: '',
+          position: 'left'
         },
         {
           window_id: 6,
           characterName: 'Максим',
           text: 'Меня зовут Максим Владимирович. И я пришёл из будущего. Я – ученый. Знаю, что у вас есть задачи, связанные с будущим нашей планеты.',
-          characterImage: ''
+          characterImage: '',
+          position: 'right'
         },
         {
           window_id: 7,
           characterName: 'Артем',
           text: 'Из будущего? Вы серьезно? У вас есть машина времени?',
-          characterImage: ''
+          characterImage: '',
+          position: 'left'
         },
         {
           window_id: 8,
           characterName: 'Алиса',
           text: 'Похоже на фантастику. Но если это правда, мы открыты новым идеям и возможностям.',
-          characterImage: ''
+          characterImage: '',
+          position: 'left'
         },
         {
           window_id: 9,
           characterName: 'Марина',
           text: 'Интересненько...',
-          characterImage: ''
+          characterImage: '',
+          position: 'left'
         }
       ]
 
@@ -229,63 +215,73 @@ const Games = () => {
       windows: [
         {
           window_id: 0,
-          character: 'Алиса',
-          text: 'Привет, ребята!',
-          path_img: ''
+          character: 'Марина',
+          text: 'Кажется, к нам кто-то идет. О, это новый учитель?',
+          path_img: '',
+          position: 'left'
         },
         {
           window_id: 1,
           character: 'Алиса',
           text: 'Выглядит, конечно, странно.',
-          path_img: ''
+          path_img: '',
+          position: 'left'
         },
         {
           window_id: 2,
           character: 'Артем',
           text: 'Похоже, он хочет у нас что-то спросить.',
-          path_img: ''
+          path_img: '',
+          position: 'left'
         },
         {
           window_id: 3,
           character: 'Алиса',
           text: 'Здравствуйте! Вам что-то подсказать?',
-          path_img: ''
+          path_img: '',
+          position: 'left'
         },
         {
           window_id: 4,
           character: 'Максим',
           text: 'Привет, ребята. Мне сказали, что вы интересуетесь экологией и инновациями.',
-          path_img: '' 
+          path_img: '',
+          position: 'left' 
         },
         {
           window_id: 5,
           character: 'Артем',
           text: 'Даже интересно, кто это доложил?',
-          path_img: ''
+          path_img: '',
+          position: 'left'
         },
         {
           window_id: 6,
           character: 'Максим',
           text: 'Меня зовут Максим Владимирович. И я пришёл из будущего. Я – ученый. Знаю, что у вас есть задачи, связанные с будущим нашей планеты.',
-          path_img: ''
+          path_img: '',
+          position: 'right'
         },
         {
           window_id: 7,
           character: 'Артем',
           text: 'Из будущего? Вы серьезно? У вас есть машина времени?',
-          path_img: ''
+          path_img: '',
+          position: 'left'
         },
         {
           window_id: 8,
           character: 'Алиса',
           text: 'Похоже на фантастику. Но если это правда, мы открыты новым идеям и возможностям.',
-          path_img: ''
+          path_img: '',
+          position: 'left'
         },
         {
           window_id: 9,
           character: 'Марина',
           text: 'Интересненько...',
-          path_img: ''
+          path_img: '',
+          position: 'left'
         }
       ]  
     }
