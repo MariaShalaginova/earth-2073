@@ -51,14 +51,14 @@
 }
 
 .positionRight {
-    width: 59%;
+    /* width: 59%; */
     position: absolute;
     top: 158px;
     left: 41%;
 }
 
 .positionLeft {
-    width: 59%;
+    /* width: 59%; */
     position: absolute;
     top: 154px;
     left: 0;
@@ -75,6 +75,7 @@
     line-height: 32px;
     letter-spacing: 0em;
     text-align: left;
+    word-wrap: break-word;
 }
 
 .buttons {
