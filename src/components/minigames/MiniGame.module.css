@@ -1,4 +1,4 @@
-.startScreen {
+/* .gameScreen {
     opacity: 1;
     transition: opacity 5s ease;
     z-index: 0;
@@ -11,15 +11,4 @@
     height: 100vh;
     background-size: cover;
     justify-content: space-evenly;
-}
-
-.mainTitle {
-    color: rgba(137, 225, 89, 1);
-}
-
-.buttonsBlock {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 200px;
-}
+} */

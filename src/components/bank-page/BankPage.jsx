@@ -16,7 +16,7 @@ const BankPage = () => {
         <h1>
         Земля-<span className={css.mainTitle}>2073</span>
         </h1>
-        <Button onClick={async event => {navigate('/game')}}>Играть</Button>
+        <Button type="button" onClick={async event => {navigate('/start')}}>Играть</Button>
   </header>
   )
 };

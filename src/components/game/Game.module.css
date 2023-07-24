@@ -1,8 +1,7 @@
 .scene {
-    /* opacity: 1;
-    transition: opacity 5s ease; */
+    opacity: 1;
+    transition: opacity 5s ease;
     position: relative;
-    z-index: 0;
     width: 100%;
 }
 
@@ -16,10 +15,9 @@
     left: 2%;
 }
 
-img {
+.sceneImg {
     width: 100%;
     height: 100%;
-    
 }
 
 .window {
@@ -41,7 +39,7 @@ img {
 .character {
     width: 169px;
     height: 40px;
-    background-color: rgba(219, 226, 249, 1);
+    background-color: rgba(137, 225, 89, 1);
     border-radius: 8px;
     font-family: Ubuntu;
     font-size: 20px;
@@ -49,6 +47,21 @@ img {
     line-height: 32px;
     letter-spacing: 0em;
     text-align: center;
+    padding-top: 4px;
+}
+
+.positionRight {
+    width: 59%;
+    position: absolute;
+    top: 158px;
+    left: 41%;
+}
+
+.positionLeft {
+    width: 59%;
+    position: absolute;
+    top: 154px;
+    left: 0;
 }
 
 .message { 
@@ -57,11 +70,12 @@ img {
     margin: auto;
     color: rgba(219, 226, 249, 1);
     font-family: Ubuntu;
-    font-size: 24px;
+    font-size: 16px;
     font-weight: 400;
     line-height: 32px;
     letter-spacing: 0em;
     text-align: left;
+    overflow-wrap: break-word;
 }
 
 .buttons {

@@ -53,9 +53,9 @@ h1 {
   color: rgba(219, 226, 249, 1);
 } 
 
-.mainTitle {
+/* .mainTitle {
   color: rgba(137, 225, 89, 1);
-}
+} */
 
 .header{
   /* min-height: 100vh; */
@@ -66,3 +66,4 @@ h1 {
   justify-content: space-evenly;
   height: 100vh;
 }
+
