@@ -6,7 +6,7 @@
     align-items: center;
     display: flex;
     flex-direction: column;
-    background-image: url('../../assets/startScreen.png');
+    /* background-image: url('../../assets/startScreen.png'); */
     background-repeat: no-repeat;
     height: 100vh;
     background-size: cover;
@@ -15,6 +15,15 @@
 
 .mainTitle {
     color: rgba(137, 225, 89, 1);
+}
+
+.menuBlock{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    align-items: center;
+    height: 50%;
+    justify-content: space-between;
 }
 
 .buttonsBlock {

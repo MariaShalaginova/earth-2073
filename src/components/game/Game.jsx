@@ -130,7 +130,7 @@ const Games = () => {
               {/* <div className={css.positionRight}>
                 <img className={css.positionChar} src={require('../../'+dialogues[currentScene].windows[currentDialog].path_img)} alt={dialogues[currentScene].windows[currentDialog].character}/>
               </div>   */}
-              <div className={css.window}>
+              <div className={classNames(css.window, !dialogues[currentScene].windows[currentDialog].text ? 'css.windowHide' : '')}>
                 <div className={css.character}>{dialogues[currentScene].windows[currentDialog].character}</div> 
                 <div className={css.message}>
                   <TypewriterText
@@ -140,14 +140,18 @@ const Games = () => {
                   />
                   {/* {dialogues[currentScene].windows[currentDialog].text} */}
                 </div>
-                <div className={css.buttons}>
+                {/* <div className={css.buttons}>
                     <DarkButton onClick={handlePrevDialog}>Назад</DarkButton>
                     <DarkButton onClick={handleNextDialog}>Далее</DarkButton>
-                </div>
+                </div> */}
+              </div>
+              <div className={css.buttons}>
+                    <DarkButton onClick={handlePrevDialog}>Назад</DarkButton>
+                    <DarkButton onClick={handleNextDialog}>Далее</DarkButton>
               </div>
           </div>) : (
           // Отображаем загрузочный экран или спиннер
-          <p>Loading...</p>
+          <p className={css.loading}>Loading...</p>
         )}
       </div>    
 
