@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 // import StartScreen from "./StartScreen";
 import Button from "../buttons/Button";
 import DarkButton from "../buttons/DarkButton";
@@ -8,14 +8,7 @@ import css from '../game/Game.module.css';
 import classNames from 'classnames';
 
 const Games = () => {
-  let location = useLocation();
-  let dialogues = location?.state?.data 
-  //для продолжения игры берем диалоги из локала
-    // if(!dialogues) {
-    //   const dialogs = localStorage.getItem('dialogues');
-    //   dialogues = JSON.parse(dialogs);
-    // }
-
+  const [dialogues, setDialogues] = useState([]); // в этот массив придет dialogues
   const navigate = useNavigate();
   const typingSpeed = 24; //Скорость печати в миллисекундах 
   const [currentScene, setCurrentScene] = useState(0);
@@ -30,9 +23,35 @@ const Games = () => {
     if (savedScene) {
       setCurrentScene(savedScene);
     }
+    fetchDialogs();
     console.log(savedScene);
 
   }, []);
+
+  const fetchDialogs = async () => {
+    try {
+      const response = await fetch('https://latikdesu.art/api/dialog/', {
+        method: 'POST',
+        // Дополнительные параметры запроса, если необходимо
+        headers: {
+          'Content-Type': 'application/json',
+          // Другие заголовки, если необходимо
+        },
+        body: JSON.stringify({start: '0', end: '5'}),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setDialogues(data.dialogues);
+        console.log(data.dialogues);
+        // localStorage.setItem("dialogues", JSON.stringify(data.dialogues));
+      } else {
+        console.error('Ошибка получения диалогов:', response.status);
+      }
+    } catch (error) {
+      console.error('Ошибка:', error);
+    }
+  };
 
 
   // const backgroundImageStyle = {
@@ -90,44 +109,47 @@ const Games = () => {
 
 
   return (
- 
-      <div className={classNames(css.scene, isAddStyle ? 'css.sceneFade' : '')}>
-        {/* <img className={css.sceneImg} src={dialogues[currentScene].scene[0].path_img}  alt={dialogues[currentScene].scene[0].name}/> */}
-        <img className={css.sceneImg} src={require('../../'+dialogues[currentScene].scene[0].path_img)} alt={dialogues[currentScene].scene[0].name}/>
-        <div className={css.backMain}>
-          <Button onClick={async event => {navigate('/start')}}>Главная страница</Button>
-        </div>
-        { dialogues[currentScene].windows[currentDialog].position === 'left' ? (
-          <div className={css.positionLeft}>
-          <img className={css.positionChar} src={require('../../'+dialogues[currentScene].windows[currentDialog].path_img)} alt={dialogues[currentScene].windows[currentDialog].character}/>
-        </div> 
-        ) :  (
-          <div className={css.positionRight}>
-            <img className={css.positionChar} src={require('../../'+dialogues[currentScene].windows[currentDialog].path_img)} alt={dialogues[currentScene].windows[currentDialog].character}/>
-          </div> 
-        ) 
-        
-        }
-          {/* <div className={css.positionRight}>
-            <img className={css.positionChar} src={require('../../'+dialogues[currentScene].windows[currentDialog].path_img)} alt={dialogues[currentScene].windows[currentDialog].character}/>
-          </div>   */}
-          <div className={css.window}>
-          <div className={css.character}>{dialogues[currentScene].windows[currentDialog].character}</div> 
-            <div className={css.message}>
-              <TypewriterText
-                text={dialogues[currentScene].windows[currentDialog].text}
-                speed={typingSpeed}
-                nextDialog={nextDialog}
-              />
-              {/* {dialogues[currentScene].windows[currentDialog].text} */}
+
+      <div>
+          {dialogues.length ? (
+            <div className={classNames(css.scene, isAddStyle ? 'css.sceneFade' : '')}>
+              {/* <img className={css.sceneImg} src={dialogues[currentScene].scene[0].path_img}  alt={dialogues[currentScene].scene[0].name}/> */}
+              <img className={css.sceneImg} src={require('../../'+dialogues[currentScene].scene[0].path_img)} alt={dialogues[currentScene].scene[0].name}/>
+              <div className={css.backMain}>
+                <Button onClick={async event => {navigate('/start')}}>Главная страница</Button>
               </div>
-              <div className={css.buttons}>
-                <DarkButton onClick={handlePrevDialog}>Назад</DarkButton>
-                <DarkButton onClick={handleNextDialog}>Далее</DarkButton>
-            </div>
-          </div>
-        {/* </div>   */}
-      </div>
+              { dialogues[currentScene].windows[currentDialog].position === 'left' ? (
+                <div className={css.positionLeft}>
+                  <img className={css.positionChar} src={require('../../'+dialogues[currentScene].windows[currentDialog].path_img)} alt={dialogues[currentScene].windows[currentDialog].character}/>
+                </div> 
+              ) : (
+                <div className={css.positionRight}>
+                  <img className={css.positionChar} src={require('../../'+dialogues[currentScene].windows[currentDialog].path_img)} alt={dialogues[currentScene].windows[currentDialog].character}/>
+                </div> 
+              )}
+              {/* <div className={css.positionRight}>
+                <img className={css.positionChar} src={require('../../'+dialogues[currentScene].windows[currentDialog].path_img)} alt={dialogues[currentScene].windows[currentDialog].character}/>
+              </div>   */}
+              <div className={css.window}>
+                <div className={css.character}>{dialogues[currentScene].windows[currentDialog].character}</div> 
+                <div className={css.message}>
+                  <TypewriterText
+                    text={dialogues[currentScene].windows[currentDialog].text}
+                    speed={typingSpeed}
+                    nextDialog={nextDialog}
+                  />
+                  {/* {dialogues[currentScene].windows[currentDialog].text} */}
+                </div>
+                <div className={css.buttons}>
+                    <DarkButton onClick={handlePrevDialog}>Назад</DarkButton>
+                    <DarkButton onClick={handleNextDialog}>Далее</DarkButton>
+                </div>
+              </div>
+          </div>) : (
+          // Отображаем загрузочный экран или спиннер
+          <p>Loading...</p>
+        )}
+      </div>    
 
   )
 };
