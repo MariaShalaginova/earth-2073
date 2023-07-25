@@ -51,17 +51,16 @@
 }
 
 .positionRight {
-    /* width: 59%; */
-    position: absolute;
-    top: 158px;
     left: 41%;
 }
 
 .positionLeft {
-    /* width: 59%; */
-    position: absolute;
-    top: 154px;
     left: 0;
+}
+
+.positionRight, .positionLeft {
+    position: absolute;
+    bottom: -0.5%;
 }
 
 .message { 

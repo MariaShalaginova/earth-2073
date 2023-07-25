@@ -30,8 +30,12 @@ code {
   /* height: auto; */
   margin: 0 auto;
   max-width: 1024px;
-  min-height: 768px;
+  /* min-height: 768px; */
   flex-grow: 1;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
 }
 
 body {

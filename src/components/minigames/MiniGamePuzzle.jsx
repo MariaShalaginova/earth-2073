@@ -1,5 +1,5 @@
 import css from './MiniGame.module.css';
-import logo from '../../assets/logo.svg';
+// import logo from '../../assets/logo.svg';
 // import startScreen from '../../assets/startScreen.png'
 import Button from '../buttons/Button';
 import { useNavigate } from 'react-router-dom';
