@@ -118,7 +118,7 @@ const Games = () => {
               <div className={css.backMain}>
                 <Button onClick={async event => {navigate('/start')}}>Главная страница</Button>
               </div>
-              { dialogues[currentScene].windows[currentDialog].position === 'left' ? (
+              {/* { dialogues[currentScene].windows[currentDialog].position === 'left' ? (
                 <div className={css.positionLeft}>
                   <img className={css.positionChar} src={require('../../'+dialogues[currentScene].windows[currentDialog].path_img)} alt={dialogues[currentScene].windows[currentDialog].character}/>
                 </div> 
@@ -126,11 +126,15 @@ const Games = () => {
                 <div className={css.positionRight}>
                   <img className={css.positionChar} src={require('../../'+dialogues[currentScene].windows[currentDialog].path_img)} alt={dialogues[currentScene].windows[currentDialog].character}/>
                 </div> 
-              )}
+              )} */}
+              <div className={classNames(css.position,  dialogues[currentScene].windows[currentDialog].position === 'left' ? css.positionLeft : css.positionRight)} >
+                  <img className={css.positionChar} src={require('../../'+dialogues[currentScene].windows[currentDialog].path_img)} alt={dialogues[currentScene].windows[currentDialog].character}/>
+                </div> 
+
               {/* <div className={css.positionRight}>
                 <img className={css.positionChar} src={require('../../'+dialogues[currentScene].windows[currentDialog].path_img)} alt={dialogues[currentScene].windows[currentDialog].character}/>
               </div>   */}
-              <div className={classNames(css.window, !dialogues[currentScene].windows[currentDialog].text ? 'css.windowHide' : '')}>
+              <div className={classNames(css.window, dialogues[currentScene].windows[currentDialog].text === '0' ? css.windowHide : '')}>
                 <div className={css.character}>{dialogues[currentScene].windows[currentDialog].character}</div> 
                 <div className={css.message}>
                   <TypewriterText

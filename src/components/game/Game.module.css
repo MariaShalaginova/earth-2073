@@ -68,6 +68,11 @@
     bottom: -0.5%;
 }
 
+.position {
+    position: absolute;
+    bottom: -0.5%;
+}
+
 .message { 
     width: 95%;
     height: 80%;
