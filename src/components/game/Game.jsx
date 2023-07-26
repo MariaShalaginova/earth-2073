@@ -37,7 +37,7 @@ const Games = () => {
           'Content-Type': 'application/json',
           // Другие заголовки, если необходимо
         },
-        body: JSON.stringify({start: '0', end: '5'}),
+        body: JSON.stringify({start: '0', end: '100'}),
       });
 
       if (response.ok) {
@@ -112,7 +112,8 @@ const Games = () => {
 
       <div>
           {dialogues.length ? (
-            <div className={classNames(css.scene, isAddStyle ? 'css.sceneFade' : '')}>
+            // <div className={classNames(css.scene, isAddStyle ? css.sceneFade : '')}>
+              <div className={classNames(css.scene, css.sceneFade)}>
               {/* <img className={css.sceneImg} src={dialogues[currentScene].scene[0].path_img}  alt={dialogues[currentScene].scene[0].name}/> */}
               <img className={css.sceneImg} src={require('../../'+dialogues[currentScene].scene[0].path_img)} alt={dialogues[currentScene].scene[0].name}/>
               <div className={css.backMain}>
@@ -127,8 +128,10 @@ const Games = () => {
                   <img className={css.positionChar} src={require('../../'+dialogues[currentScene].windows[currentDialog].path_img)} alt={dialogues[currentScene].windows[currentDialog].character}/>
                 </div> 
               )} */}
-              <div className={classNames(css.position,  dialogues[currentScene].windows[currentDialog].position === 'left' ? css.positionLeft : css.positionRight)} >
-                  <img className={css.positionChar} src={require('../../'+dialogues[currentScene].windows[currentDialog].path_img)} alt={dialogues[currentScene].windows[currentDialog].character}/>
+              {/* <div className={classNames(css.position,  dialogues[currentScene].windows[currentDialog].position === 'left' ? css.positionLeft : css.positionRight, dialogues[currentScene].windows[currentDialog].position === '0' ? css.windowHide : '')} > */}
+
+              <div className={css.position}>
+                  <img className={classNames(css.positionChar,  dialogues[currentScene].windows[currentDialog].position === 'left' ? css.positionLeft : css.positionRight)} src={require('../../'+dialogues[currentScene].windows[currentDialog].path_img)} alt={dialogues[currentScene].windows[currentDialog].character}/>
                 </div> 
 
               {/* <div className={css.positionRight}>

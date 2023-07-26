@@ -1,6 +1,6 @@
 .startScreen {
-    opacity: 1;
-    transition: opacity 5s ease;
+    /* opacity: 1;
+    transition: opacity 5s ease; */
     z-index: 0;
     width: 100%;
     align-items: center;
@@ -11,6 +11,7 @@
     height: 100vh;
     background-size: cover;
     justify-content: space-evenly;
+    animation: imageFade 3s ease-in-out;
 }
 
 .mainTitle {
@@ -32,3 +33,16 @@
     justify-content: space-between;
     height: 200px;
 }
+
+@keyframes imageFade {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  /* .fade {
+    animation: imageFade 2s ease-in-out;
+  } */
