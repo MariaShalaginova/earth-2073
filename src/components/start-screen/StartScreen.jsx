@@ -1,8 +1,7 @@
-// import React, { useState } from "react";
-// import React, { useState, useEffect } from "react";
 import css from './StartScreen.module.css';
 import logo from '../../assets/logo.svg';
-import startScreen from '../../assets/startScreen.png'
+import startScreen from '../../assets/startScreen.png';
+import startScreenAdd from '../../assets/startScreenAdd.png';
 import Button from '../buttons/Button';
 import { useNavigate } from 'react-router-dom';
 
@@ -22,7 +21,8 @@ const StartScreen = () => {
   return (
       
     <div className={css.startScreen}>
-      <img  src={startScreen}  alt="start screen"/>
+      {/* <img  src={startScreen}  alt="start screen"/> */}
+      <img  src={startScreenAdd}  alt="start screen"/>
       <div className={css.menuBlock}>
         <img className={css.logo} src={logo} alt="logo" />
         <h1 className={css.title}>

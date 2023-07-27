@@ -1,6 +1,4 @@
 .startScreen {
-    /* opacity: 1;
-    transition: opacity 5s ease; */
     z-index: 0;
     width: 100%;
     align-items: center;
@@ -25,7 +23,19 @@
     align-items: center;
     height: 50%;
     justify-content: space-between;
+
+    /* height: 55%;
+    justify-content: space-around;
+    left: 55%; */
 }
+
+/* .logo {
+    margin-top: 100px;
+} */
+
+/* .title {
+    margin-top: -60px;
+} */
 
 .buttonsBlock {
     display: flex;
