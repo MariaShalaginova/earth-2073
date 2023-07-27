@@ -1,6 +1,4 @@
 .scene {
-    /* opacity: 1;
-    transition: opacity 5s ease; */
     position: relative;
     width: 100%;
 }
@@ -25,7 +23,6 @@
     height: 188px;
     background-color: rgba(0, 0, 0, 0.7);
     position: absolute;
-    /* z-index: 5; */
     bottom: 4%;
     left: 4%;
     /* transform: translate(-10%, -10%); */
@@ -122,13 +119,13 @@
     animation: imageFade 2s ease-in-out;
   }
 
-  img {
+  /* img {
     animation: imageFade 2s ease-in-out;
   }
 
   .scene img {
     animation: imageFade 2s ease-in-out;
-  }
+  } */
 
   .loading {
     font-family: Ubuntu;

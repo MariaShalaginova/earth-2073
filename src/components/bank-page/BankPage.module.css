@@ -2,10 +2,6 @@
     color: rgba(137, 225, 89, 1);
 }
 
-/* .logo {
-    width: 20%;
-    height: 20%;
-} */
 .header{
     min-height: 100vh;
     display: flex;
