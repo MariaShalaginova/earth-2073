@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
-// import StartScreen from "./StartScreen";
 import Button from "../buttons/Button";
 import DarkButton from "../buttons/DarkButton";
 import TypewriterText from './TypewriterText';
@@ -88,7 +87,6 @@ const Games = () => {
     }
 
     if ( currentScene === sceneLength ) {
-      
       console.log("Конец");
       localStorage.setItem("currentScene", '0')
       return;
@@ -101,7 +99,6 @@ const Games = () => {
     setCurrentDialog(0);
     // setIsAddStyle(true);
   };
-
 
   return (
 
@@ -129,7 +126,7 @@ const Games = () => {
                   dialogues[currentScene].windows[currentDialog].window_id === 1 && nextDialog && dialogues[currentScene].windows[currentDialog-1].text === "0"
                 )  ? css.sceneFade : '')} >
                   <img className={classNames(css.positionChar,  dialogues[currentScene].windows[currentDialog].position === 'left' ? css.positionLeft : css.positionRight)} src={require('../../'+dialogues[currentScene].windows[currentDialog].path_img)} alt={dialogues[currentScene].windows[currentDialog].character}/>
-                </div> 
+              </div> 
 
               <div className={classNames(css.window, dialogues[currentScene].windows[currentDialog].text === '0' ? css.windowHide : '',(
                   dialogues[currentScene].windows[currentDialog].window_id === 0 && nextDialog && dialogues[currentScene].windows[currentDialog].text !== "0"
@@ -150,7 +147,7 @@ const Games = () => {
                     <DarkButton onClick={handleNextDialog}>Далее</DarkButton>
                 </div> */}
               </div>
-              <div className={css.buttons}>
+              <div className={classNames(css.buttons, dialogues[currentScene].windows[currentDialog].name === "КОНЕЦ" ? css.windowHide : '')}>
                     <DarkButton onClick={handlePrevDialog}>Назад</DarkButton>
                     <DarkButton onClick={handleNextDialog}>Далее</DarkButton>
               </div>
