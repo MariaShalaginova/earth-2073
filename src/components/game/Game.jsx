@@ -10,12 +10,14 @@ import classNames from 'classnames';
 const Games = () => {
   const [dialogues, setDialogues] = useState([]); // в этот массив придет dialogues
   const navigate = useNavigate();
-  const typingSpeed = 24; //Скорость печати в миллисекундах 
+  const typingSpeed = 30; //Скорость печати в миллисекундах 
   const [currentScene, setCurrentScene] = useState(0);
-  const [isAddStyle, setIsAddStyle] = useState(true);
+  // const [isAddStyle, setIsAddStyle] = useState(true);
   // const [currentWindowIndex, setCurrentWindowIndex] = useState(0); //для сохранения в локал текущего диалога
   const [currentDialog, setCurrentDialog] = useState(0);  
   const [nextDialog, setNextDialog] = useState(false);
+  const [imagesLoaded, setImagesLoaded] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     //Получение данных из localStorage
@@ -44,6 +46,7 @@ const Games = () => {
         const data = await response.json();
         setDialogues(data.dialogues);
         console.log(data.dialogues);
+        setLoading(false); 
         // localStorage.setItem("dialogues", JSON.stringify(data.dialogues));
       } else {
         console.error('Ошибка получения диалогов:', response.status);
@@ -53,6 +56,58 @@ const Games = () => {
     }
   };
 
+
+  // useEffect(() => {
+  //   const image = new Image();
+  //   image.src = src;
+  //   image.onload = () => {
+  //     setLoading(false);
+  //   };
+  // }, [src]);
+
+  // useEffect(() => {
+  //   // Проверяем, все ли изображения загружены
+  //   if (dialogues) {
+  //     const images = [];
+  //     dialogues.forEach(item => {
+  //       const img = new Image();
+  //       img.src = item.imagePath;
+  //       images.push(img);
+  //     });
+
+  //     Promise.all(images.map(img => {
+  //       return new Promise((resolve, reject) => {
+  //         img.onload = resolve;
+  //         img.onerror = reject;
+  //       });
+  //     }))
+  //       .then(() => {
+  //         setImagesLoaded(true); // Все изображения загружены
+  //       })
+  //       .catch(error => {
+  //         console.error(error);
+  //       });
+  //   }
+  // }, [data]); 
+
+//   useEffect(() => {
+//     const images = [
+//       require('../../\'+dialogues[currentScene].scene[0].path_img)'),
+//      require('../../\'+dialogues[currentScene].windows[currentDialog].path_img)')
+//     ];
+// console.log(images);
+//     const loadImage = (image) => {
+//       return new Promise((resolve) => {
+//         const img = new Image();
+//         img.src = image;
+//         img.onload = () => resolve();
+//       });
+//     };
+
+//     Promise.all(images.map((image) => loadImage(image))).then(() => {
+//       setImagesLoaded(true);
+//     });
+//   }, []);
 
   // const backgroundImageStyle = {
   //   backgroundImage: `url(${require('../../'+dialogues[currentScene].scene[0].path_img)})`,
@@ -104,15 +159,17 @@ const Games = () => {
     localStorage.setItem("currentScene", currentScene+1);
     console.log(localStorage);
     setCurrentDialog(0);
-    setIsAddStyle(true);
+    // setIsAddStyle(true);
   };
 
 
   return (
 
       <div>
-          {dialogues.length ? (
+          {!loading ? (
             // <div className={classNames(css.scene, isAddStyle ? css.sceneFade : '')}>
+              
+              
               <div className={classNames(css.scene, css.sceneFade)}>
               {/* <img className={css.sceneImg} src={dialogues[currentScene].scene[0].path_img}  alt={dialogues[currentScene].scene[0].name}/> */}
               <img className={css.sceneImg} src={require('../../'+dialogues[currentScene].scene[0].path_img)} alt={dialogues[currentScene].scene[0].name}/>
@@ -130,7 +187,7 @@ const Games = () => {
               )} */}
               {/* <div className={classNames(css.position,  dialogues[currentScene].windows[currentDialog].position === 'left' ? css.positionLeft : css.positionRight, dialogues[currentScene].windows[currentDialog].position === '0' ? css.windowHide : '')} > */}
 
-              <div className={css.position}>
+              <div className={classNames(css.position,  dialogues[currentScene].windows[currentDialog].position === '0' ? css.windowHide : '')} >
                   <img className={classNames(css.positionChar,  dialogues[currentScene].windows[currentDialog].position === 'left' ? css.positionLeft : css.positionRight)} src={require('../../'+dialogues[currentScene].windows[currentDialog].path_img)} alt={dialogues[currentScene].windows[currentDialog].character}/>
                 </div> 
 

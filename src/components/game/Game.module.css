@@ -51,7 +51,7 @@
     line-height: 32px;
     letter-spacing: 0em;
     text-align: center;
-    padding-top: 4px;
+    /* padding-top: 4px; */
     margin-bottom: 10px;
 }
 
@@ -80,6 +80,7 @@
 .positionChar {
     width: 55%;
     position: relative;
+    animation: imageFade 2s ease-in-out;
 }
 
 
@@ -118,6 +119,10 @@
   }
   
   .sceneFade {
+    animation: imageFade 2s ease-in-out;
+  }
+
+  img {
     animation: imageFade 2s ease-in-out;
   }
 
