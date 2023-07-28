@@ -5,6 +5,9 @@ import DarkButton from "../buttons/DarkButton";
 import TypewriterText from './TypewriterText';
 import css from '../game/Game.module.css';
 import classNames from 'classnames';
+// import useSound from 'use-sound';
+import sound from '../../assets/Earth.mp3';
+
 
 const Games = () => {
   const [dialogues, setDialogues] = useState([]); // в этот массив придет dialogues
@@ -17,6 +20,33 @@ const Games = () => {
   const [nextDialog, setNextDialog] = useState(false);
   // const [imagesLoaded, setImagesLoaded] = useState(false);
   const [loading, setLoading] = useState(true);
+  // const soundUrl = '/sounds/guitar-loop.mp3';
+  
+  // useEffect(() => {
+  //   const audio = new Audio(sound); // Создание элемента Audio
+  //   audio.play(); // Воспроизведение звукового файла
+
+  //   // return () => {
+  //   //   audio.pause(); // При необходимости остановите воспроизведение перед размонтированием компонента
+  //   // };
+  // }, []);
+
+  // useEffect(() => {
+  //   const audio = new Audio(sound);
+  //   audio.addEventListener('ended', () => {
+  //     audio.currentTime = 0;
+  //     audio.play();
+  //   });
+  //   audio.play();
+
+  //   return () => {
+  //     // audio.pause();
+  //     audio.removeEventListener('ended', () => {
+  //       audio.currentTime = 0;
+  //       audio.play();
+  //     });
+  //   };
+  // }, []);
 
   useEffect(() => {
     //Получение данных из localStorage
@@ -54,6 +84,8 @@ const Games = () => {
       console.error('Ошибка:', error);
     }
   };
+
+  // const [play, { stop, isPlaying }] = useSound(soundUrl);
 
   const handlePrevDialog = () => {
     let dialogLength = dialogues[currentScene].windows.length;
